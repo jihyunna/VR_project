@@ -20,11 +20,11 @@ public class PointerEvent : MonoBehaviour
     {
         if (IsOn)
         {
-            if (barTime <= 5.0f)
+            if (barTime <= 2.0f)
             {
                 barTime += Time.deltaTime;
             }
-            LoadingBar.fillAmount = barTime / 5.0f;
+            LoadingBar.fillAmount = barTime / 2.0f;
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
