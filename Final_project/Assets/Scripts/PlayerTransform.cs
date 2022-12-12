@@ -21,9 +21,6 @@ public class PlayerTransform : MonoBehaviour
         float h = Input.GetAxis("Horizontal") * Time.deltaTime;
         transform.Translate(fb * v * speed);
         transform.Rotate(lr * h * speed);
-
-
     }
-
 
 }
