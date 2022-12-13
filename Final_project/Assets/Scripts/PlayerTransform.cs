@@ -6,6 +6,9 @@ public class PlayerTransform : MonoBehaviour
 {
     public float speed = 30f;
     public float scrollSpeed = 2000.0f;
+    public GameObject PlayerTargetPosition1;
+    public GameObject PlayerTargetPosition2;
+
     Vector3 fb = new Vector3(0, 0, 1);
     Vector3 lr = new Vector3(0, 1, 0);
 
@@ -25,6 +28,15 @@ public class PlayerTransform : MonoBehaviour
 
         float scroollWheel = Input.GetAxis("Mouse ScrollWheel");
         Camera.main.fieldOfView -= scroollWheel * Time.deltaTime * scrollSpeed;
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position = Vector3.MoveTowards(gameObject.transform.position, PlayerTargetPosition1.transform.position, 0.5f);     
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position = Vector3.MoveTowards(gameObject.transform.position, PlayerTargetPosition2.transform.position, 0.5f);
+        }
     }
 
 }
