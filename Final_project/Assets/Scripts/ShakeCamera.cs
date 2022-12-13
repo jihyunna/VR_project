@@ -4,85 +4,49 @@ using UnityEngine;
 
 public class ShakeCamera : MonoBehaviour
 {
-
-    public float shakes = 0f;
-
-    public float shakeAmount = 0.7f;
-
-    public float decreaseFactor = 1.0f;
-
-    Vector3 originalPos;
-
-    bool CameraShaking;
-
+    private float shakeTime;
+    private float shakeIntensity;
 
 
     void Start()
 
     {
-
-        originalPos = gameObject.transform.position;
-
-        CameraShaking = false;
-
     }
 
-    public void Shake(float shaking)
-
+    public void onShakeCamera(float shakeTime = 2.0f, float shakeIntensity = 2.0f)
     {
+        Debug.Log("Invoke Time" + Time.time);
+        this.shakeTime = shakeTime;
+        this.shakeIntensity = shakeIntensity;
 
-        shakes = shaking;
-
-        originalPos = gameObject.transform.position;
-
-        CameraShaking = true;
-
+        StopCoroutine("ShakeByPosition");
+        StartCoroutine("ShakeByPosition");
     }
 
-
-
-    void Update()
-
+    private IEnumerator ShakeByPosition()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
+        Vector3 startPosition = transform.position;
+
+        while (shakeTime > 0.0f)
         {
-            if (CameraShaking)
-            {
+            transform.position = startPosition + Random.insideUnitSphere * shakeIntensity;
 
-                if (shakes > 0)
+            shakeTime -= Time.deltaTime;
 
-                {
-
-                    gameObject.transform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
-
-                    gameObject.transform.position += new Vector3(0f, 0f, -50f);
-
-
-                    shakes -= Time.deltaTime * decreaseFactor;
-
-                }
-
-                else
-
-                {
-
-                    shakes = 0f;
-
-                    gameObject.transform.localPosition = originalPos;
-
-                    CameraShaking = false;
-
-                }
-
-
-
-
-
-            }
+            yield return new WaitForSeconds(5.0f);
         }
+        transform.position = startPosition;
+    }
 
-
-
+    private void Update()
+    {
+        //if (Input.GetKeyDown("1"))
+        //{
+        //    onShakeCamera(0.1f, 1f);
+        //}
+        Debug.Log("Start Time " + Time.time);
+        Invoke("onShakeCamera", 5.0f);
+        onShakeCamera(5f, 0.3f);
     }
 
 }

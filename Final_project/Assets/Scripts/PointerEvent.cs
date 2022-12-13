@@ -3,13 +3,13 @@ using System.Collections;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider))]
-
 public class PointerEvent : MonoBehaviour
 {
     public Image LoadingBar;
+    public Transform Cube;
+    public Transform Manual;
     private bool IsOn;
     private float barTime = 0.0f;
-
     void Start()
     {
         IsOn = false;
@@ -20,11 +20,12 @@ public class PointerEvent : MonoBehaviour
     {
         if (IsOn)
         {
-            if (barTime <= 5.0f)
+            if (barTime <= 1.0f)
             {
                 barTime += Time.deltaTime;
             }
-            LoadingBar.fillAmount = barTime / 5.0f;
+            LoadingBar.fillAmount = barTime / 1.0f;
+            Instantiate(Manual, new Vector3(-300, 163, -143),Quaternion.Euler(0,-90,0));
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -48,4 +49,3 @@ public class PointerEvent : MonoBehaviour
     }
 
 }
-
