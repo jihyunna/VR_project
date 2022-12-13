@@ -40,10 +40,6 @@ public class ShakeCamera : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown("1"))
-        //{
-        //    onShakeCamera(0.1f, 1f);
-        //}
         Debug.Log("Start Time " + Time.time);
         Invoke("onShakeCamera", 5.0f);
         onShakeCamera(5f, 0.3f);

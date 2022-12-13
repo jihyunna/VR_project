@@ -6,7 +6,7 @@ public class SpawnBullet : MonoBehaviour
 {
     public Transform Piece_R, Piece_B;
     public Transform BulletFirePos;
-    public float fireTime = 3.0f;
+    public float fireTime = 2.0f;
     public float firePassTime = 0.0f;
 
     int Color = 0;
