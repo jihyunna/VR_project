@@ -15,13 +15,17 @@ public class TowelPointerEvent : MonoBehaviour
 
     void Start()
     {
-        IsOn = false;
-        LoadingBar.fillAmount = 0;
+        //IsOn = false;
+        //LoadingBar.fillAmount = 0;
     }
 
     void Update()
     {
-        if (IsOn)
+        if(Input.GetMouseButtonDown(0))
+        {
+            transform.position = Vector3.MoveTowards(gameObject.transform.position, TargetPosition2.transform.position, 0.5f);
+        }
+        /*if (IsOn)
         {
             if (barTime <= 10.0f)
                 barTime += Time.deltaTime;
@@ -29,7 +33,7 @@ public class TowelPointerEvent : MonoBehaviour
             LoadingBar.fillAmount = barTime / 10.0f;
             transform.position = Vector3.MoveTowards(gameObject.transform.position, TargetPosition2.transform.position, 0.5f);
         }
-
+        */
        // transform.position = Vector3.MoveTowards(gameObject.transform.position, TargetPosition2.transform.position, 0.5f);
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -37,7 +41,7 @@ public class TowelPointerEvent : MonoBehaviour
 
     }
 
-    public void SetGazedAt(bool gazedAt)
+    /*public void SetGazedAt(bool gazedAt)
     {
         IsOn = gazedAt;
         barTime = 0.0f;
@@ -48,5 +52,5 @@ public class TowelPointerEvent : MonoBehaviour
             Debug.Log("Out");
             LoadingBar.fillAmount = 0;
         }
-    }
+    }*/
 }
