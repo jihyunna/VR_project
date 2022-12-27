@@ -6,6 +6,11 @@ public class clickDoor : MonoBehaviour
 
     void Update()
     {
+
+    }
+
+    private void OnMouseDown()
+    {
         if (Input.GetMouseButton(0))
         {
             transform.Rotate(Vector3.forward);

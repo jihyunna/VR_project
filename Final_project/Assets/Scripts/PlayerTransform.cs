@@ -1,30 +1,42 @@
-﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class PlayerTransform : MonoBehaviour
 {
-    private void Start()
-    {
+    public float speed = 30f;
+    public float scrollSpeed = 2000.0f;
+    public GameObject PlayerTargetPosition1;
+    public GameObject PlayerTargetPosition2;
 
+    Vector3 fb = new Vector3(0, 0, 1);
+    Vector3 lr = new Vector3(0, 1, 0);
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
     }
+
+    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.UpArrow))
+        float v = Input.GetAxis("Vertical") * Time.deltaTime;
+        float h = Input.GetAxis("Horizontal") * Time.deltaTime;
+        transform.Translate(fb * v * speed);
+        transform.Rotate(lr * h * speed);
+
+        float scroollWheel = Input.GetAxis("Mouse ScrollWheel");
+        Camera.main.fieldOfView -= scroollWheel * Time.deltaTime * scrollSpeed;
+
+        if (Input.GetKey(KeyCode.W))
         {
-            this.transform.Translate(Vector3.forward * 10.0f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(gameObject.transform.position, PlayerTargetPosition1.transform.position, 0.5f);     
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.D))
         {
-            this.transform.Translate(Vector3.back * 10.0f * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.RightArrow))
-        {
-            this.transform.Translate(Vector3.right * 10.0f * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            this.transform.Translate(Vector3.left * 10.0f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(gameObject.transform.position, PlayerTargetPosition2.transform.position, 0.5f);
         }
     }
+
 }
