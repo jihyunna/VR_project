@@ -80,8 +80,8 @@ TextMesh:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4077120178257047521}
   m_Text: "      <<   \uD654\uC7AC \uB300\uC751 \uB9E4\uB274\uC5BC\r  >>\n\r\n1.
-    119 \uC2E0\uACE0\r\n2. \uC816\uC740 \uC218\uAC74\uC73C\uB85C \uCF54\uC640 \uC785
-    \uB9C9\uAE30\r\n3. \uACC4\uB2E8 \uC774\uC6A9\uD574\uC11C \uC2E4\uC678\uB85C \uC774\uB3D9 "
+    119 \uC2E0\uACE0\r\n2. \uACC4\uB2E8 \uC774\uC6A9\uD574\uC11C \uC2E4\uC678\uB85C
+    \uC774\uB3D9 "
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
